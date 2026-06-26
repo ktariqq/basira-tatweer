@@ -1,19 +1,21 @@
-
-# ｡･:*:･ﾟ★  بصيرة | Basira  ★ﾟ･:*:･ﾟ｡  
+<div align="center">
   
+# بصيرة | Basira
 **ذكاء السوق الجغرافي للمجتمعات الريفية**   |  Geospatial Market Intelligence for Rural Entrepreneurs
 
+
 ![Offline Ready](https://img.shields.io/badge/Offline-Ready-7c3aed?style=flat-square&labelColor=1a0a2e)
-![Arabic First](https://img.shields.io/badge/Arabic-First-7c3aed?style=flat-square&labelColor=1a0a2e)
-![CPU Only](https://img.shields.io/badge/Inference-CPU_Only-7c3aed?style=flat-square&labelColor=1a0a2e)
-![License](https://img.shields.io/badge/License-MIT-7c3aed?style=flat-square&labelColor=1a0a2e)
+![Arabic First](https://img.shields.io/badge/Arabic-First-8b5cf6?style=flat-square&labelColor=1a0a2e)
+![CPU Only](https://img.shields.io/badge/Inference-CPU_Only-a855f7?style=flat-square&labelColor=1a0a2e)
+![License](https://img.shields.io/badge/License-MIT-6d28d9?style=flat-square&labelColor=1a0a2e)
+<br>
 ![Sentinel-2](https://img.shields.io/badge/Sentinel--2-L2A_10m-7c3aed?style=flat-square&labelColor=1a0a2e&logo=satellite&logoColor=white)
-![NASADEM](https://img.shields.io/badge/NASADEM-30m_DEM-7c3aed?style=flat-square&labelColor=1a0a2e)
-![VIIRS](https://img.shields.io/badge/VIIRS-Black_Marble-7c3aed?style=flat-square&labelColor=1a0a2e)
+![NASADEM](https://img.shields.io/badge/NASADEM-30m_DEM-8b5cf6?style=flat-square&labelColor=1a0a2e)
+![VIIRS](https://img.shields.io/badge/VIIRS-Black_Marble-5b21b6?style=flat-square&labelColor=1a0a2e)
 ![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-ODbL-7c3aed?style=flat-square&labelColor=1a0a2e&logo=openstreetmap&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.111-7c3aed?style=flat-square&labelColor=1a0a2e&logo=fastapi&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.10+-7c3aed?style=flat-square&labelColor=1a0a2e&logo=python&logoColor=white)
-<div align="center">
+![FastAPI](https://img.shields.io/badge/FastAPI-0.111-8b5cf6?style=flat-square&labelColor=1a0a2e&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10+-a855f7?style=flat-square&labelColor=1a0a2e&logo=python&logoColor=white)
+
 ━━━━━━━━━━━━━━ ✦ ✧ ✦ ━━━━━━━━━━━━━━
 </div>
 
