@@ -1,0 +1,102 @@
+{
+  "1.1": {
+    "demand_score": 35,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 0.4,
+      "resource_suitability": 0.002130771003124813
+    }
+  },
+  "1.2": {
+    "demand_score": 57,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 1.0,
+      "resource_suitability": 0.9878010876811463
+    }
+  },
+  "1.3": {
+    "demand_score": 70,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 1.0,
+      "resource_suitability": 0.9977584890398651
+    }
+  },
+  "2.1": {
+    "demand_score": 58,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 1.0,
+      "resource_suitability": 0.9989551517268286
+    }
+  },
+  "2.2": {
+    "demand_score": 68,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 1.0,
+      "resource_suitability": 0.9994503271224773
+    }
+  },
+  "2.3": {
+    "demand_score": 56,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 0.9166666666666666,
+      "resource_suitability": 0.9994503271224773
+    }
+  },
+  "2.4": {
+    "demand_score": 62,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 1.0,
+      "resource_suitability": 0.9989551517268286
+    }
+  },
+  "3.1": {
+    "demand_score": 59,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 0.9444444444444444,
+      "resource_suitability": 0.9989551517268286
+    }
+  },
+  "3.2": {
+    "demand_score": 59,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 1.0,
+      "resource_suitability": 0.9997512713450428
+    }
+  },
+  "3.3": {
+    "demand_score": 69,
+    "signals": {
+      "agricultural_density": 0.3878356922398338,
+      "population_proxy": 0.17338318767791375,
+      "road_accessibility": 0.7251199618235353,
+      "competition_penalty": 0.6666666666666667,
+      "resource_suitability": 0.996086181458762
+    }
+  }
+}

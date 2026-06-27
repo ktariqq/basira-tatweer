@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بصيرة | Basira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #7F00FF;
+    --deep-purple: #2E003E;
+    --lavender: #C8A2C8;
+    --plum: #8E4585;
+    --hot-pink: #FF007F;
+    --shocking-pink: #FF4DCC;
+    --dark-pink: #C2185B;
+    --soft-pink: #F8BBD0;
+    --bg: #0D0010;
+    --text: #E8D5F5;
+    --grid: #3D1A5E;
+    --success: #3FB950;
+    --warning: #F77F00;
+    --border: #3D1A5E;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', Arial, sans-serif;
+    min-height: 100vh;
+    direction: rtl;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(127,0,255,0.15);
+    border: 1px solid var(--violet);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    color: var(--success);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  .header h1 {
+    font-size: 52px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--violet), var(--shocking-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .header .subtitle-ar {
+    font-size: 16px;
+    color: var(--lavender);
+    margin-bottom: 2px;
+  }
+  .header .subtitle-en {
+    font-size: 12px;
+    color: var(--grid);
+  }
+
+  /* Input card */
+  .input-card {
+    background: rgba(46,0,62,0.6);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+  }
+
+  .input-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--lavender);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .input-label .en {
+    font-size: 11px;
+    color: var(--grid);
+    font-weight: 400;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 90px;
+    background: rgba(13,0,16,0.8);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Cairo', Arial, sans-serif;
+    font-size: 15px;
+    padding: 14px;
+    resize: vertical;
+    outline: none;
+    direction: rtl;
+    transition: border-color 0.2s;
+  }
+  textarea:focus { border-color: var(--violet); }
+  textarea::placeholder { color: var(--grid); }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Cairo', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--violet), var(--hot-pink));
+    color: white;
+    flex: 1;
+    justify-content: center;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-secondary {
+    background: rgba(127,0,255,0.15);
+    border: 1px solid var(--violet);
+    color: var(--lavender);
+  }
+  .btn-secondary:hover { background: rgba(127,0,255,0.25); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .lang-en .ar-only { display: none !important; }
+  .lang-en .en-only { display: block !important; }
+  .lang-ar .en-only { display: none !important; }
+
+  .community-select {
+    background: rgba(13,0,16,0.8);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Cairo', Arial, sans-serif;
+    font-size: 13px;
+    padding: 8px 12px;
+    outline: none;
+    direction: rtl;
+    cursor: pointer;
+  }
+
+  /* Voice indicator */
+  .voice-indicator {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(255,77,204,0.1);
+    border: 1px solid var(--shocking-pink);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--shocking-pink);
+  }
+  .voice-indicator.active { display: flex; }
+  .pulse {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--shocking-pink);
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* Skeleton */
+  .skeleton-card {
+    display: none;
+    background: rgba(46,0,62,0.6);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+  .skeleton-card.visible { display: block; }
+  .skel {
+    background: linear-gradient(90deg, var(--deep-purple) 25%, var(--grid) 50%, var(--deep-purple) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Results */
+  .result-card {
+    display: none;
+    background: rgba(46,0,62,0.6);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .result-card.visible { display: block; }
+
+  .result-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .category-badge {
+    background: rgba(127,0,255,0.2);
+    border: 1px solid var(--violet);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--lavender);
+  }
+
+  .confidence-badge {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .conf-high { background: rgba(63,185,80,0.2); color: var(--success); border: 1px solid var(--success); }
+  .conf-medium { background: rgba(247,127,0,0.2); color: var(--warning); border: 1px solid var(--warning); }
+  .conf-low { background: rgba(255,0,127,0.15); color: var(--hot-pink); border: 1px solid var(--hot-pink); }
+
+  .demand-score-section {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(13,0,16,0.5);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .score-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .score-value {
+    font-size: 32px;
+    font-weight: 900;
+  }
+
+  .score-bar-bg {
+    background: var(--grid);
+    border-radius: 8px;
+    height: 12px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .score-bar-fill {
+    height: 12px;
+    border-radius: 8px;
+    transition: width 1s ease;
+  }
+
+  .signals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .signal-item {
+    background: rgba(61,26,94,0.4);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .signal-label {
+    font-size: 11px;
+    color: var(--lavender);
+    margin-bottom: 4px;
+  }
+  .signal-label .en { font-size: 10px; color: var(--grid); }
+  .signal-bar-bg {
+    background: var(--deep-purple);
+    border-radius: 4px;
+    height: 6px;
+  }
+  .signal-bar-fill {
+    height: 6px;
+    border-radius: 4px;
+    background: var(--violet);
+  }
+  .signal-pct {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 4px;
+  }
+
+  /* Explanation */
+  .explanation-section {
+    margin: 20px 0;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--lavender);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-title .en {
+    font-size: 11px;
+    color: var(--grid);
+    font-weight: 400;
+  }
+  .explanation-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text);
+    padding: 14px;
+    background: rgba(13,0,16,0.4);
+    border-radius: 8px;
+    border-right: 3px solid var(--violet);
+  }
+  .explanation-text.en {
+    direction: ltr;
+    text-align: left;
+    border-right: none;
+    border-left: 3px solid var(--plum);
+    margin-top: 8px;
+    color: var(--lavender);
+    font-size: 12px;
+  }
+
+  /* License */
+  .license-card {
+    display: none;
+    background: rgba(46,0,62,0.6);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .license-card.visible { display: block; }
+
+  .license-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .license-item {}
+  .license-item-label {
+    font-size: 11px;
+    color: var(--lavender);
+    margin-bottom: 4px;
+  }
+  .license-item-label .en { color: var(--grid); }
+  .license-item-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .cost-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--shocking-pink);
+  }
+
+  .steps-list {
+    list-style: none;
+    counter-reset: steps;
+  }
+  .steps-list li {
+    counter-increment: steps;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(61,26,94,0.4);
+    font-size: 13px;
+    color: var(--text);
+  }
+  .steps-list li::before {
+    content: counter(steps);
+    min-width: 24px;
+    height: 24px;
+    background: var(--violet);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  /* Map section */
+  .map-section {
+    display: none;
+    margin-bottom: 20px;
+  }
+  .map-section.visible { display: block; }
+
+  .map-frame {
+    width: 100%;
+    height: 520px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--deep-purple);
+  }
+
+  .map-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: rgba(127,0,255,0.15);
+    border: 1px solid var(--violet);
+    border-radius: 8px;
+    color: var(--lavender);
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Cairo', Arial, sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .map-open-btn:hover { background: rgba(127,0,255,0.25); }
+
+  /* Confirmation prompt */
+  .confirm-prompt {
+    display: none;
+    background: rgba(247,127,0,0.1);
+    border: 1px solid var(--warning);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .confirm-prompt.visible { display: block; }
+  .confirm-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--warning);
+    margin-bottom: 14px;
+  }
+  .confirm-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .confirm-btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(46,0,62,0.6);
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'Cairo', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .confirm-btn:hover {
+    border-color: var(--violet);
+    background: rgba(127,0,255,0.2);
+  }
+
+  /* Notification */
+  .notif {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--deep-purple);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 13px;
+    color: var(--text);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .notif.show { opacity: 1; }
+
+  @media (max-width: 600px) {
+    .signals-grid { grid-template-columns: 1fr; }
+    .license-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">● معالجة محلية | Processing locally</div>
+    <h1>بصيرة</h1>
+    <div class="subtitle-ar">ذكاء السوق الجغرافي للمجتمعات الريفية</div>
+    <div class="subtitle-en">Geospatial Market Intelligence for Rural Communities</div>
+  </div>
+
+  <!-- Input card -->
+  <div class="input-card">
+    <div class="input-label">
+      صف فكرتك أو مهارتك
+      <span class="en">| Describe your idea or skill</span>
+    </div>
+    <textarea id="textInput" placeholder="مثال: أريد تربية الإبل وبيع الحليب... / Example: I want to start a small farm..."></textarea>
+
+    <div class="voice-indicator" id="voiceIndicator">
+      <div class="pulse"></div>
+      <span id="voiceLabel">تكلّم الآن | Speak now</span>
+    </div>
+
+    <div class="btn-row">
+      <select class="community-select" id="communitySelect">
+        <option value="alquaa">القعا | Al Qua'a</option>
+      </select>
+      <button class="btn btn-secondary" id="langBtn" onclick="toggleLang()" style="min-width:90px;">
+        🌐 English
+      </button>
+      <button class="btn btn-secondary" id="voiceBtn" onclick="startVoice()">
+        🎙 صوت | Voice
+      </button>
+      <button class="btn btn-primary" id="analyzeBtn" onclick="analyze()">
+        تحليل | Analyze →
+      </button>
+    </div>
+  </div>
+
+  <!-- Confirmation prompt (medium confidence) -->
+  <div class="confirm-prompt" id="confirmPrompt">
+    <div class="confirm-title">هل تقصد أحد هذين الخيارين؟ | Did you mean one of these?</div>
+    <div class="confirm-options" id="confirmOptions"></div>
+  </div>
+
+  <!-- Skeleton loader -->
+  <div class="skeleton-card" id="skeleton">
+    <div class="skel" style="height:20px;width:40%"></div>
+    <div class="skel" style="height:14px;width:70%;margin-top:8px"></div>
+    <div class="skel" style="height:60px;margin-top:16px"></div>
+    <div class="skel" style="height:14px;width:55%;margin-top:12px"></div>
+    <div class="skel" style="height:14px;width:40%;margin-top:8px"></div>
+  </div>
+
+  <!-- Main result -->
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div>
+        <div style="font-size:11px;color:var(--grid);margin-bottom:4px;" id="macroLabel"></div>
+        <div style="font-size:18px;font-weight:700;" id="catLabel"></div>
+      </div>
+      <div>
+        <div class="confidence-badge" id="confBadge"></div>
+      </div>
+    </div>
+
+    <div class="demand-score-section">
+      <div class="score-header">
+        <div>
+          <div style="font-size:12px;color:var(--lavender);margin-bottom:4px;">مؤشر الطلب | Demand Index</div>
+          <div class="score-value" id="scoreValue">—</div>
+        </div>
+        <div style="text-align:left">
+          <div style="font-size:11px;color:var(--grid);margin-bottom:4px;">Community</div>
+          <div style="font-size:13px;font-weight:600;" id="communityLabel"></div>
+        </div>
+      </div>
+      <div class="score-bar-bg">
+        <div class="score-bar-fill" id="scoreBar" style="width:0%"></div>
+      </div>
+      <div class="signals-grid" id="signalsGrid"></div>
+    </div>
+
+    <div class="explanation-section">
+      <div class="section-title">لماذا هذه النتيجة؟ <span class="en">| Why This Result?</span></div>
+      <div class="explanation-text" id="explanationAr"></div>
+      <div class="explanation-text en" id="explanationEn"></div>
+    </div>
+  </div>
+
+  <!-- Map section -->
+  <div class="map-section" id="mapSection">
+    <div class="section-title" style="margin-bottom:12px;">
+      خريطة الفرص الجغرافية <span class="en">| Geospatial Opportunity Map</span>
+    </div>
+    <div style="margin-bottom:10px;">
+      <button class="btn btn-secondary" onclick="generateMap()" id="mapBtn">
+        🗺 توليد الخريطة | Generate Map
+      </button>
+    </div>
+    <div id="mapContainer" style="display:none;">
+      <iframe class="map-frame" id="mapFrame" src=""></iframe>
+      <a class="map-open-btn" id="mapOpenLink" href="#" target="_blank">
+        ↗ فتح الخريطة في نافذة جديدة | Open map in new window
+      </a>
+    </div>
+  </div>
+
+  <!-- License card -->
+  <div class="license-card" id="licenseCard">
+    <div class="section-title">الترخيص والتسجيل <span class="en">| License & Registration</span></div>
+    <div class="license-grid">
+      <div class="license-item">
+        <div class="license-item-label">نوع الترخيص <span class="en">| License Type</span></div>
+        <div class="license-item-value" id="licType"></div>
+      </div>
+      <div class="license-item">
+        <div class="license-item-label">الجهة المختصة <span class="en">| Authority</span></div>
+        <div class="license-item-value" id="licAuthority"></div>
+      </div>
+      <div class="license-item">
+        <div class="license-item-label">التكلفة التقديرية <span class="en">| Estimated Cost</span></div>
+        <div class="cost-value" id="licCost"></div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:4px;">خطواتك الأولى <span class="en">| Your First Steps</span></div>
+    <ol class="steps-list" id="stepsList"></ol>
+  </div>
+
+</div>
+
+<!-- Notification -->
+<div class="notif" id="notif"></div>
+
+<script>
+const API = '';
+let currentSubcategory = null;
+let currentCommunity = 'alquaa';
+
+function showNotif(msg, ms=2800) {
+  const n = document.getElementById('notif');
+  n.textContent = msg;
+  n.classList.add('show');
+  setTimeout(() => n.classList.remove('show'), ms);
+}
+
+function setLoading(on) {
+  document.getElementById('skeleton').classList.toggle('visible', on);
+  document.getElementById('analyzeBtn').disabled = on;
+  document.getElementById('voiceBtn').disabled = on;
+}
+
+function scoreColor(score) {
+  if (score >= 80) return '#FF4DCC';
+  if (score >= 65) return '#FF007F';
+  if (score >= 50) return '#8E4585';
+  if (score >= 35) return '#C8A2C8';
+  return '#7F00FF';
+}
+
+function demandLabel(score) {
+  if (score >= 65) return 'عالٍ | High';
+  if (score >= 40) return 'متوسط | Medium';
+  return 'منخفض | Low';
+}
+
+function confClass(level) {
+  if (level === 'high') return 'conf-high';
+  if (level === 'medium') return 'conf-medium';
+  return 'conf-low';
+}
+
+function confLabel(level, pct) {
+  const labels = {
+    high: `${Math.round(pct*100)}٪ — تطابق عالٍ`,
+    medium: `${Math.round(pct*100)}٪ — تطابق متوسط`,
+    low: `${Math.round(pct*100)}٪ — تطابق منخفض`,
+  };
+  return labels[level] || `${Math.round(pct*100)}٪`;
+}
+
+const SIGNAL_LABELS = {
+  agricultural_density: { ar: 'الكثافة الزراعية', en: 'Agricultural Density' },
+  population_proxy:     { ar: 'كثافة السكان',     en: 'Population Proxy' },
+  road_accessibility:   { ar: 'إمكانية الوصول',   en: 'Road Accessibility' },
+  competition_penalty:  { ar: 'المنافسة (مقلوبة)', en: 'Competition (inverted)' },
+  resource_suitability: { ar: 'ملاءمة الموارد',   en: 'Resource Suitability' },
+};
+
+function renderSignals(signals) {
+  const grid = document.getElementById('signalsGrid');
+  grid.innerHTML = '';
+  const keys = ['agricultural_density','population_proxy','road_accessibility','competition_penalty','resource_suitability'];
+  for (const key of keys) {
+    const val = signals[key] || 0;
+    const pct = Math.round(val * 100);
+    const lbl = SIGNAL_LABELS[key] || { ar: key, en: key };
+    const color = val > 0.6 ? '#7F00FF' : val > 0.35 ? '#8E4585' : '#C8A2C8';
+    grid.innerHTML += `
+      <div class="signal-item">
+        <div class="signal-label">${lbl.ar} <span class="en">| ${lbl.en}</span></div>
+        <div class="signal-bar-bg"><div class="signal-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+        <div class="signal-pct">${pct}٪</div>
+      </div>`;
+  }
+}
+
+function renderLicense(lic) {
+  document.getElementById('licType').textContent = (lic.license_type_ar || '') + ' | ' + (lic.license_type_en || '');
+  document.getElementById('licAuthority').textContent = lic.authority_en || '';
+  document.getElementById('licCost').textContent = `AED ${lic.cost_range_aed || lic.estimated_cost_aed || '—'}`;
+
+  const list = document.getElementById('stepsList');
+  list.innerHTML = '';
+  const steps = lic.first_steps_ar || [];
+  const stepsEn = lic.first_steps_en || [];
+  for (let i = 0; i < steps.length; i++) {
+  list.innerHTML += `
+    <li>
+      <span class="step-ar">${steps[i]}</span>
+      <span class="step-en" style="display:none;direction:ltr;">${stepsEn[i] || ''}</span>
+    </li>`;
+  }
+}
+
+function showConfirmPrompt(top2, data) {
+  const prompt = document.getElementById('confirmPrompt');
+  const opts = document.getElementById('confirmOptions');
+  prompt.classList.add('visible');
+  opts.innerHTML = '';
+  for (const item of top2) {
+    const btn = document.createElement('button');
+    btn.className = 'confirm-btn';
+    const catAr = data._subcategoryNames?.[item.cat]?.ar || item.cat;
+    const catEn = data._subcategoryNames?.[item.cat]?.en || item.cat;
+    btn.textContent = `${catAr} | ${catEn} (${Math.round(item.score*100)}٪)`;
+    btn.onclick = () => {
+      prompt.classList.remove('visible');
+      fetchAndRender(btn.dataset.text, item.cat);
+    };
+    btn.dataset.text = document.getElementById('textInput').value;
+    opts.appendChild(btn);
+  }
+}
+
+function renderResult(data) {
+  setLoading(false);
+  document.getElementById('skeleton').classList.remove('visible');
+
+  currentSubcategory = data.subcategory;
+  currentCommunity = data.community?.id || 'alquaa';
+
+  // Classification
+  document.getElementById('macroLabel').textContent =
+    (data.macro_group_ar || '') + ' | ' + (data.macro_group_en || '');
+  document.getElementById('catLabel').textContent =
+    (data.subcategory_ar || '') + ' | ' + (data.subcategory_en || '');
+
+  const confBadge = document.getElementById('confBadge');
+  confBadge.textContent = confLabel(data.confidence_level, data.confidence);
+  confBadge.className = 'confidence-badge ' + confClass(data.confidence_level);
+
+  // Score
+  const score = data.demand_score || 0;
+  const color = scoreColor(score);
+  document.getElementById('scoreValue').innerHTML =
+    `<span style="color:${color}">${score}</span><span style="font-size:16px;color:var(--grid)">/100 — ${demandLabel(score)}</span>`;
+  setTimeout(() => {
+    document.getElementById('scoreBar').style.width = score + '%';
+    document.getElementById('scoreBar').style.background = color;
+  }, 100);
+
+  document.getElementById('communityLabel').textContent =
+    (data.community?.name_ar || '') + ' | ' + (data.community?.name_en || '');
+
+  renderSignals(data.signals || {});
+
+  // Explanation
+  document.getElementById('explanationAr').textContent = data.explanation?.ar || '';
+  document.getElementById('explanationEn').textContent = data.explanation?.en || '';
+
+  // License
+  renderLicense(data.license || {});
+
+  // Show cards
+  document.getElementById('resultCard').classList.add('visible');
+  document.getElementById('licenseCard').classList.add('visible');
+  document.getElementById('mapSection').classList.add('visible');
+
+  // Confirm prompt for medium confidence
+  if (data.confidence_level === 'medium' && data.top2?.length > 1) {
+    data._subcategoryNames = {};
+    // We'll just use raw for now
+    showConfirmPrompt(data.top2, data);
+  } else {
+    document.getElementById('confirmPrompt').classList.remove('visible');
+  }
+}
+
+async function analyze() {
+  const text = document.getElementById('textInput').value.trim();
+  if (!text) { showNotif('أدخل نصاً للتحليل | Enter text to analyze'); return; }
+  const community = document.getElementById('communitySelect').value;
+  currentCommunity = community;
+
+  setLoading(true);
+  document.getElementById('resultCard').classList.remove('visible');
+  document.getElementById('licenseCard').classList.remove('visible');
+  document.getElementById('mapSection').classList.remove('visible');
+  document.getElementById('mapContainer').style.display = 'none';
+  document.getElementById('confirmPrompt').classList.remove('visible');
+
+  try {
+    const fd = new FormData();
+    fd.append('text', text);
+    fd.append('community_id', community);
+    const res = await fetch('/api/classify', { method: 'POST', body: fd });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    renderResult(data);
+  } catch (e) {
+    setLoading(false);
+    showNotif('خطأ في الاتصال | Connection error: ' + e.message, 4000);
+    console.error(e);
+  }
+}
+
+async function generateMap() {
+  if (!currentSubcategory) return;
+  const mapBtn = document.getElementById('mapBtn');
+  mapBtn.disabled = true;
+  mapBtn.textContent = 'جارٍ التوليد | Generating...';
+
+  try {
+    const fd = new FormData();
+    fd.append('subcategory', currentSubcategory);
+    fd.append('community_id', currentCommunity);
+    const res = await fetch('/api/map', { method: 'POST', body: fd });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+
+    const container = document.getElementById('mapContainer');
+    const frame = document.getElementById('mapFrame');
+    const link = document.getElementById('mapOpenLink');
+    frame.src = data.map_url;
+    link.href = data.map_url;
+    container.style.display = 'block';
+    showNotif('تم توليد الخريطة | Map generated ✓');
+  } catch (e) {
+    showNotif('خطأ في توليد الخريطة | Map error: ' + e.message, 4000);
+    console.error(e);
+  } finally {
+    mapBtn.disabled = false;
+    mapBtn.textContent = '🗺 توليد الخريطة | Generate Map';
+  }
+}
+
+let mediaRecorder = null;
+let audioChunks = [];
+
+async function startVoice() {
+  const ind = document.getElementById('voiceIndicator');
+  const lbl = document.getElementById('voiceLabel');
+  const btn = document.getElementById('voiceBtn');
+
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
+    mediaRecorder.stop();
+    return;
+  }
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = async () => {
+      ind.classList.remove('active');
+      btn.textContent = '🎙 صوت | Voice';
+      const blob = new Blob(audioChunks, { type: 'audio/webm' });
+      await sendAudio(blob);
+      stream.getTracks().forEach(t => t.stop());
+    };
+    mediaRecorder.start();
+    ind.classList.add('active');
+    lbl.textContent = 'جارٍ التسجيل — اضغط مرة أخرى للإيقاف | Recording — tap again to stop';
+    btn.textContent = '⏹ إيقاف | Stop';
+  } catch (e) {
+    showNotif('لا يمكن الوصول إلى الميكروفون | Microphone access denied', 3500);
+  }
+}
+
+async function sendAudio(blob) {
+  setLoading(true);
+  document.getElementById('resultCard').classList.remove('visible');
+  document.getElementById('licenseCard').classList.remove('visible');
+  document.getElementById('mapSection').classList.remove('visible');
+
+  try {
+    const fd = new FormData();
+    fd.append('audio', blob, 'voice.webm');
+    fd.append('community_id', document.getElementById('communitySelect').value);
+    const res = await fetch('/api/voice', { method: 'POST', body: fd });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    if (data.transcript) {
+      document.getElementById('textInput').value = data.transcript;
+      showNotif(`تم التعرف على: "${data.transcript.substring(0,40)}..."`);
+    }
+    renderResult(data);
+  } catch (e) {
+    setLoading(false);
+    showNotif('خطأ في الصوت | Voice error: ' + e.message, 4000);
+    console.error(e);
+  }
+}
+
+// Load communities
+fetch('/api/communities').then(r => r.json()).then(communities => {
+  const sel = document.getElementById('communitySelect');
+  sel.innerHTML = '';
+  for (const c of communities) {
+    const opt = document.createElement('option');
+    opt.value = c.id;
+    opt.textContent = `${c.name_ar} | ${c.name_en}`;
+    sel.appendChild(opt);
+  }
+}).catch(() => {});
+
+// Enter to submit
+document.getElementById('textInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.ctrlKey) analyze();
+});
+
+// Toggle languages
+let currentLang = 'ar';
+
+function toggleLang() {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  const btn = document.getElementById('langBtn');
+
+  if (currentLang === 'en') {
+    document.documentElement.setAttribute('lang', 'en');
+    document.documentElement.setAttribute('dir', 'ltr');
+    document.body.style.direction = 'ltr';
+    btn.textContent = '🌐 العربية';
+    // Swap explanation panels
+    document.getElementById('explanationAr').style.display = 'none';
+    document.getElementById('explanationEn').style.display = 'block';
+    // Swap steps to English
+    document.querySelectorAll('.step-en').forEach(el => el.style.display = 'block');
+    document.querySelectorAll('.step-ar').forEach(el => el.style.display = 'none');
+  } else {
+    document.documentElement.setAttribute('lang', 'ar');
+    document.documentElement.setAttribute('dir', 'rtl');
+    document.body.style.direction = 'rtl';
+    btn.textContent = '🌐 English';
+    document.getElementById('explanationAr').style.display = 'block';
+    document.getElementById('explanationEn').style.display = 'none';
+    document.querySelectorAll('.step-en').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.step-ar').forEach(el => el.style.display = 'block');
+  }
+}
+
+</script>
+</body>
+</html>
