@@ -331,7 +331,11 @@ First step: Register on TAMM at tamm.abudhabi.ae
 Explanation: 68% agricultural land density within 15km. Low competition (2 OSM POIs). Road accessibility: moderate.
 ```
 
-> 💡 *Placeholder visual: animated GIF of the full 8-second pipeline — voice input → classification card appears → map renders with opportunity zones highlighted. Place inline here, width ~680px.*
+<p align="center">
+  <img src="assets/pipeline_demo.gif" width="680">
+  <br>
+  <em>Figure 1. End-to-end Basira analysis pipeline from Arabic voice input to opportunity zone visualization.</em>
+</p>
 
 <br/>
 
@@ -384,7 +388,11 @@ User Input (Voice OR Text — Arabic OR English, auto-detected)
 | Transcription | < 5s | ✅ |
 | Map generation | < 3s | ✅ |
 
-> 💡 *Placeholder visual: architecture diagram as a clean dark-purple infographic — same pipeline above rendered as connected boxes with icons for each component. Export as `assets/architecture.png`, embed here at width ~700px.*
+<p align="center">
+  <img src="assets/architecture.png" width="700">
+  <br>
+  <em>Figure 2. High-level architecture of the Basira geospatial intelligence system.</em>
+</p>
 
 <br/>
 
@@ -606,9 +614,17 @@ The map is a **decision interface**, not a visualisation layer. Its primary ques
 
 **Opportunity zones** are the decision layer — filled polygons derived from the demand score grid where signal exceeds a threshold, labelled in Arabic: *"المنطقة الأنسب لمشروعك"* (Best zone for your business). Hover tooltips show demand score and the top two contributing signals at that location.
 
-> 💡 *Placeholder visual: screenshot of the Folium map output showing all five layers active over Al Qua'a — opportunity zones in shocking pink, NDVI overlay in purple-green gradient, POI markers clustered, Arabic panel visible top-right. Embed as `assets/map_screenshot.png`, width ~700px.*
+<p align="center">
+  <img src="assets/map_screenshot.jpg" width="700">
+  <br>
+  <em>Figure 5. Interactive Folium map displaying opportunity zones, NDVI, points of interest, road network, and Arabic analysis interface.</em>
+</p>
 
-> 💡 *Placeholder visual: close-up of an opportunity zone tooltip in Arabic showing demand score and signal breakdown. Small image, ~300px, inline right-aligned or centred below the map screenshot.*
+<p align="center">
+  <img src="assets/tooltip_arabic.jpg" width="320">
+  <br>
+  <em>Figure 6. Arabic tooltip showing the opportunity score and contributing demand indicators for a selected zone.</em>
+</p>
 
 <br/>
 
