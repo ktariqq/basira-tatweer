@@ -401,9 +401,9 @@ User Input (Voice OR Text — Arabic OR English, auto-detected)
 | Map generation | < 3s | ✅ |
 
 <p align="center">
-  <img src="assets/architecture.png" width="700">
+  <img src="assets/architecture.jpg" width="700">
   <br>
-  <em>Figure 2. High-level architecture of the Basira geospatial intelligence system.</em>
+  <em>Figure 2. High-level architecture plan of the Basira geospatial intelligence system.</em>
 </p>
 
 <br/>
