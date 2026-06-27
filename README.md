@@ -3,7 +3,6 @@
   <img src="assets/header.png" alt="Basira Header" width="100%">
 </p>
   
-# بصيرة | Basira
 **ذكاء السوق الجغرافي للمجتمعات الريفية**   |  Geospatial Market Intelligence for Rural Entrepreneurs
 
 
