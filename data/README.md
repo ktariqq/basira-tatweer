@@ -1,6 +1,8 @@
-# Data Acquisition — Basira (بصيرة)
+# 🟣 Data Acquisition — Basira (بصيرة)
 
 All data used in Basira is freely available from open public sources. No proprietary datasets, no paid APIs, no web scraping. Every file can be reproduced by following the steps below. All processing was done locally using QGIS and Python (rasterio).
+
+**Download data folder 'alquaa' from: https://drive.google.com/drive/folders/1VY2HyMjAW0w2dWt9HB7OGIsfjbr_OR0B?usp=drive_link**
 
 ---
 
